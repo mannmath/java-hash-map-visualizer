@@ -1,0 +1,10 @@
+.container-fluid {
+  padding-right: 0;
+  padding-left: 0;
+  margin: 10px;
+}
+#visualizer {
+  filter: blur(4px);
+  -webkit-filter: blur(4px);
+  pointer-events: none;
+}

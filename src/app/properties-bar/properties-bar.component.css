@@ -1,0 +1,42 @@
+.properties-bar {
+  position: relative;
+}
+div.table {
+  width: 100%;
+  /* important */
+  display: table;
+  text-align: center;
+  background-color: rgb(173, 212, 173);
+  font-family: "Gill Sans MT";
+  font-size: 15px;
+  margin-bottom: 5px;
+  border-radius: 4px;
+}
+.table-cell {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+/* .tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+
+  position: absolute;
+  z-index: 1;
+  top: -5px;
+  left: 105%;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+} */

@@ -1,0 +1,17 @@
+.container {
+  height: 320px;
+  max-height: 500px;
+  position: relative;
+}
+.btn {
+  position: absolute;
+  border-color: white;
+}
+#next {
+  bottom: 0px;
+  right: 0px;
+}
+#prev {
+  bottom: 0px;
+  right: 50px;
+}

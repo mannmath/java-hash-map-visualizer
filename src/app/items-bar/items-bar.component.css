@@ -1,0 +1,27 @@
+.inventory {
+  height: 25px;
+  margin-bottom: 5px;
+  font-family: Calibri;
+  font-size: medium;
+  border: 1px rgb(141, 141, 141) dotted;
+  background-color: wheat;
+  padding: 2px;
+  border-radius: 3px;
+  overflow-y: scroll;
+  text-align: center;
+}
+
+.glyphicon.glyphicon-arrow-right {
+  font-size: 13px;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.inventory::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.inventory {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}

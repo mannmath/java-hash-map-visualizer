@@ -1,0 +1,28 @@
+<div class="container" (click)="drawOnCanvas()">
+  <canvas
+    id="canvas"
+    height="330vh"
+    width="700vw"
+    (click)="findBucketAndDrawForIt($event)"
+  >
+    does not support canvas
+  </canvas>
+  <button
+    type="submit"
+    class="btn btn-default"
+    id="next"
+    onclick="this.blur(); "
+    (click)="goNext()"
+  >
+    <span class="glyphicon glyphicon-step-forward"></span>
+  </button>
+  <button
+    type="submit"
+    class="btn btn-default"
+    id="prev"
+    onclick="this.blur();"
+    (click)="goPrev()"
+  >
+    <span class="glyphicon glyphicon-step-backward"></span>
+  </button>
+</div>

@@ -1,0 +1,316 @@
+<div class="starter-holder">
+  <div class="starter-box intro-end" id="6">
+    <h3>Our inventory :</h3>
+    <h4>
+      This is the list of keys and values along with the bucket number for
+      keys(decided by me, you'll see why...) that we'll be playing with in a
+      while:
+    </h4>
+    <table class="table table-condensed" align="center">
+      <thead>
+        <tr>
+          <th>Key</th>
+          <th>Value</th>
+          <th>Bucket Number</th>
+        </tr>
+      </thead>
+      <tr>
+        <td>b</td>
+        <td>y</td>
+        <td>2</td>
+      </tr>
+      <tr>
+        <td>g</td>
+        <td>t</td>
+        <td>3</td>
+      </tr>
+      <tr>
+        <td>h</td>
+        <td>s</td>
+        <td>2</td>
+      </tr>
+      <tr>
+        <td>c</td>
+        <td>x</td>
+        <td>3</td>
+      </tr>
+      <tr>
+        <td>d</td>
+        <td>w</td>
+        <td>4</td>
+      </tr>
+      <tr>
+        <td>i</td>
+        <td>r</td>
+        <td>3</td>
+      </tr>
+      <tr>
+        <td>e</td>
+        <td>v</td>
+        <td>5</td>
+      </tr>
+      <tr>
+        <td>a</td>
+        <td>z</td>
+        <td>3</td>
+      </tr>
+    </table>
+
+    <h4>Now that every thing is set, let's begin the put operation.</h4>
+    <h5>
+      To move to the next steps, click on the
+      <span class="glyphicon glyphicon-step-forward"></span>(forward) button.
+      And you know what the
+      <span class="glyphicon glyphicon-step-forward"></span>(reverse) button is
+      for already. You can move between the steps anytime you want. As we
+      proceed, we'll see elements being added to their respective buckets
+      dynamically. Click on the home button anytime to go to the very beginning.
+    </h5>
+
+    <button
+      type="button"
+      class="btn btn-success okay"
+      (click)="hideCurrentAndShowNext(6)"
+    >
+      Just Start Already !!
+    </button>
+  </div>
+
+  <div class="starter-box hash-map-benefits" id="5">
+    <h3>Yes, we could have. But we shouldn't.</h3>
+    <h4>
+      Because what would we do when we want to update a hero's hit points ?
+      Iterate over the array ? Wouldn't that be way too slow considering the
+      fact that there can be many heros?
+    </h4>
+    <h5>
+      That's when hashing comes into play. Imagine if we hashed each hero's name
+      and stored their hit points at the hash value based index locations in an
+      array ?
+    </h5>
+    <h5>
+      Hmm. But there's no guarantee that the hash values will be incrementing
+      step by step. What if one hash value is 1 and another is 1000 ? Do we
+      create an array of size 1000 just to store five elements ? Isn't that a
+      huge waste of memory considering the fact that arrays allocate memory in a
+      contiguous fashion?
+    </h5>
+    <h4>
+      Ok, then we can't just assign a huge memory chuck to our map. Lets say we
+      initialize the map with a size of 6(any number)
+      <a
+        href="https://stackoverflow.com/questions/37959941/what-exactly-is-bucket-in-hashmap"
+        target="_blank"
+        >buckets</a
+      >. Then how do we decide which element goes to which bucket?
+    </h4>
+    <h5>
+      We use the
+      <a
+        href="https://www.mathsisfun.com/definitions/modulo-operation.html#:~:text=The%20modulo%20(or%20%22modulus%22,dividing%20one%20number%20by%20another.&text=It%20is%20like%20we%20aren,just%20where%20we%20end%20up."
+        target="_blank"
+        >modulo</a
+      >
+      operation !!
+    </h5>
+    <h5>
+      When we do a modulus of the hash value with our bucket size, we'll always
+      get a value which will be between 0 to (bucket size - 1).
+    </h5>
+    <h5>
+      So we take a key object, get its hash value, do a modulus of the hash
+      value with our current bucket size and get the bucket number. Then we
+      store the value in the corresponding bucket. That is for insert('put')
+      operation into hash map.
+    </h5>
+    <h5>
+      Now for read('get') and update/delete operation, we take the input key
+      object, get its hash value, do a modulus of the hash value with our
+      current map size and get the bucket number. Then we go to that bucket and
+      fetch the value stored there. We can now do whatever we want with it.
+    </h5>
+    <h4>
+      Note that this is a very simplified version of how hash map operates. Keep
+      going till the end to see the 'put' operation in action. We are not going
+      to cover 'get' and 'delete' operations but they should be pretty straight
+      forward to understand.
+    </h4>
+
+    <button
+      type="button"
+      class="btn btn-success okay"
+      (click)="hideCurrentAndShowNext(5)"
+    >
+      Alrighty then !!
+    </button>
+  </div>
+
+  <div class="starter-box map-intro" id="4">
+    <h3>Now, let's talk about what a map is.</h3>
+    <h4>
+      A map is a data structure that can store information in key and value
+      pairs.
+    </h4>
+    <h5>
+      Consider a scenario. You want to design a game. You have five heros in
+      your party. You want to be able to store, retrieve and update their health
+      point values.<br />
+    </h5>
+    <table class="table table-condensed" align="center">
+      <thead>
+        <tr>
+          <th>Hero Name</th>
+          <th>Hit Points</th>
+        </tr>
+      </thead>
+      <tr>
+        <td>Harley</td>
+        <td>300</td>
+      </tr>
+      <tr>
+        <td>Natalia</td>
+        <td>150</td>
+      </tr>
+      <tr>
+        <td>Zhask</td>
+        <td>200</td>
+      </tr>
+      <tr>
+        <td>Johnson</td>
+        <td>1200</td>
+      </tr>
+      <tr>
+        <td>Layla</td>
+        <td>300</td>
+      </tr>
+    </table>
+    <h5>
+      Here we can store the hero name as a key and their respective health point
+      as the value. Whenever, the hero gets hurt or buffed(you know, the
+      annoying for oppsition teams, life gain abilities), we can simply fetch
+      the latest hit points value and update accordingly.
+    </h5>
+    <h4>
+      Ok, that sounds cool... but couldn't we just store the hero names and the
+      hit points in equally indexed arrays and update them ? What's the use of a
+      new data structure and where are we using hashing in this ?
+    </h4>
+    <h3>Don't worry... We'll get there next.</h3>
+
+    <button
+      type="button"
+      class="btn btn-success okay"
+      (click)="hideCurrentAndShowNext(4)"
+    >
+      Mmm.. Okay
+    </button>
+  </div>
+
+  <div class="starter-box hash-intro" id="3">
+    <h3>
+      Before we start talking about HashMap, let's understand what the word
+      means.
+    </h3>
+    <h4>It is a combination of two terms really. 'Hash' and 'Map'.</h4>
+    <h5>
+      Hashing is the technique that is used to identify something uniquely in a
+      group of similar items. For instance, if you're a student, you'd have a
+      roll number in our class...yeah? So, that is your hash value in your whole
+      class. That roll number signifies you.
+    </h5>
+    <h5>
+      Similarly, all objects that we see in java; it could be an Integer, a
+      String or a Boolean, doesn't matter; can have their own hash values, which
+      can be used to uniquely identify them in a group of objects. Now, how the
+      hash value is calculated for an object ? Well, that really depends on the
+      type of the object. For instance, if it's a Boolean object, and its value
+      is true, java says its hash value should be
+      <a
+        href="https://beginnersbook.com/2014/08/boolean-hashcode-method-in-java/"
+        target="_blank"
+        >1231</a
+      >. Similarly for false, it would be 1237.
+    </h5>
+    <h5>
+      But it's not that simple. For some data types, say a String, the hash
+      value would be calculated such as
+      <a
+        href="https://www.tutorialspoint.com/java/java_string_hashcode.htm"
+        target="_blank"
+        >hash(String)</a
+      >
+      = s[0]*31^(n-1) + s[1]*31^(n-2) + ... + s[n-1] <br />where, s[i] is the
+      ith character of the string, n is the length of the string, and ^
+      indicates exponentiation.
+    </h5>
+    <h5>
+      Obviously, if you have your own class and its objects, then you have to
+      come up with a good hash code implementation. The point is, the default
+      hash code implementation tries really hard to come up with a hash value
+      that would be unique for every individual object. But what we think,
+      doesn't always work out....does it ? Well, not for me at least. :)
+    </h5>
+    <h5>
+      That's why we have a backup plan. Enter
+      <a
+        href="https://abhishekchattopadhyay.wordpress.com/2014/06/14/concepts-of-hashing/"
+        target="_blank"
+        >"Collisions"</a
+      >. Now whenever we have multiple objects having the same hash value in a
+      group of objects, we say a collision occured. It means now we can not
+      distinguish between multiple objects just by calculating their hash
+      values. What to do in that case and why does it bother us ? <br />We'll
+      know soon enough.
+    </h5>
+    <h3>Ok, now that we know about hashing, let's move on.</h3>
+
+    <button
+      type="button"
+      class="btn btn-success okay"
+      (click)="hideCurrentAndShowNext(3)"
+    >
+      Yup
+    </button>
+  </div>
+
+  <div class="starter-box condition" id="2">
+    <img src="" alt="image not choosen" id="condition-img" />
+    <h3 id="condition-text">default condition text</h3>
+    <h4>
+      Are you feeling up for learning and visualizing what goes on behind the
+      scenes of a Java hashmap?
+    </h4>
+    <button type="button" class="btn btn-danger" (click)="bummer()">
+      Nah. Not today.
+    </button>
+    <button
+      type="button"
+      class="btn btn-success yup"
+      (click)="hideCurrentAndShowNext(2)"
+    >
+      Let's do It
+    </button>
+  </div>
+
+  <div class="starter-box welcome" id="1">
+    <img src="../../assets/face12.png" />
+    <h1>Hi there !!!</h1>
+    <h3>How you Doin'??</h3>
+    <button
+      type="button"
+      class="btn btn-danger"
+      (click)="setMessageAndImageForCondition('bad'); hideCurrentAndShowNext(1)"
+    >
+      Not so Good
+    </button>
+    <button
+      type="button"
+      class="btn btn-success yup"
+      (click)="
+        setMessageAndImageForCondition('good'); hideCurrentAndShowNext(1)
+      "
+    >
+      Very Well
+    </button>
+  </div>
+</div>

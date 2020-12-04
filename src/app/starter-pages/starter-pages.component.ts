@@ -45,7 +45,7 @@ export class StarterPagesComponent implements OnInit {
 
   public bummer() {
     alert(
-      'Ah well...Feel free to come back anytime !! You can just close the tab or you know, may be change your mind ??.'
+      'Ah well...Feel free to come back anytime !! You can just close the tab or you know, may be change your mind ??'
     );
   }
 }

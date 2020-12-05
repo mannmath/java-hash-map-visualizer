@@ -17,11 +17,11 @@ export class StarterPagesComponent implements OnInit {
     if (condition == 'good') {
       conditionMessage =
         "That's very Good To Hear. Let's cheer it up by learning something cool !!";
-      conditionImageUrl = '../../assets/face11.png';
+      conditionImageUrl = 'assets/face11.png';
     } else {
       conditionMessage =
         "Don't Worry. You'll get over it. You know, sometimes distraction from a problem is a good solution.";
-      conditionImageUrl = '../../assets/face2.png';
+      conditionImageUrl = 'assets/face2.png';
     }
     let conditionElement = <HTMLHeadingElement>(
       document.getElementById('condition-text')

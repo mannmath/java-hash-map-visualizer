@@ -21,7 +21,7 @@ export class DescriptionBarComponent implements OnInit {
 }
 
 function getStickerForStep(step: number): string {
-  let baseUrl = '../../assets/';
+  let baseUrl = 'assets/';
   let imgIcon = 'face1.png';
   switch (step) {
     case 0:

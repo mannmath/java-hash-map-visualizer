@@ -15,8 +15,8 @@ export class VisualizerSpaceComponent implements OnInit {
   }
 
   descriptionBarRef: DescriptionBarComponent;
-  async ngOnInit(): Promise<void> {
-    await this.drawOnCanvas();
+  ngOnInit() {
+    this.drawOnCanvas();
   }
 
   bucketToStartObject: Map<any, any> = new Map();
@@ -27,7 +27,7 @@ export class VisualizerSpaceComponent implements OnInit {
   collisionConvertThreshold: number = 3;
   static stepCount: number = 0;
 
-  public async drawOnCanvas() {
+  public drawOnCanvas() {
     // To ensure one time drawing at beginning
     if (this.skeletonDrawn) {
       return;
@@ -38,13 +38,13 @@ export class VisualizerSpaceComponent implements OnInit {
       throw new Error('canvas not found');
     }
 
-    // response will be a Map<Data, Bucket_No>
-    await this.createKeyValueBucketPairs();
+    // keyToBucket will be a Map<Data, Bucket_No>
+    this.createKeyValueBucketPairs();
 
     this.InitializeAndDrawBuckets(ele);
   }
 
-  private async createKeyValueBucketPairs() {
+  private createKeyValueBucketPairs() {
     let targetMap = new Map();
     targetMap.set('b', 'y');
     targetMap.set('g', 't');
@@ -55,10 +55,9 @@ export class VisualizerSpaceComponent implements OnInit {
     targetMap.set('e', 'v');
     targetMap.set('a', 'z');
 
-    // response comes from a backend service(cached at backend)
-    let keyToBucket: Map<any, any>;
-    keyToBucket = await this.responseFromAPI(targetMap, keyToBucket);
-    keyToBucket = new Map(Object.entries(keyToBucket));
+    // keyToBucket comes from a backend service(cached at backend)
+    let keyToBucket = new Map<any, any>();
+    keyToBucket = this.setupBuckets(targetMap, keyToBucket);
 
     let KeyValueBucketPairs = [];
     for (const [k, v] of targetMap) {
@@ -81,19 +80,46 @@ export class VisualizerSpaceComponent implements OnInit {
     }
   }
 
-  private async responseFromAPI(
-    targetMap: Map<any, any>,
-    keyToBucket: Map<any, any>
-  ) {
-    await this.http
-      .post<any>(
-        'http://127.0.0.1:8080/v1/bucket-ids',
-        Array.from(targetMap.keys())
-      )
-      .toPromise()
-      .then((data) => {
-        keyToBucket = data;
-      });
+  private setupBuckets(targetMap: Map<any, any>, keyToBucket: Map<any, any>) {
+    for (let key of Array.from(targetMap.keys())) {
+      switch (key.toLowerCase()) {
+        case 'b':
+          keyToBucket.set(key, 2);
+          break;
+
+        case 'c':
+          keyToBucket.set(key, 3);
+          break;
+
+        case 'h':
+          keyToBucket.set(key, 2);
+          break;
+
+        case 'g':
+          keyToBucket.set(key, 3);
+          break;
+
+        case 'd':
+          keyToBucket.set(key, 4);
+          break;
+
+        case 'i':
+          keyToBucket.set(key, 3);
+          break;
+
+        case 'e':
+          keyToBucket.set(key, 5);
+          break;
+
+        case 'a':
+          keyToBucket.set(key, 3);
+          break;
+
+        default:
+          break;
+      }
+    }
+
     return keyToBucket;
   }
 
